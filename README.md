@@ -28,3 +28,11 @@ An AI-powered travel planning application that creates budget-conscious trips wi
 
    ```bash
    git clone https://github.com/Rishit0105/Ai-Travel-Planner.git
+
+
+## Author
+
+**Rishit Goyal**
+
+- GitHub: [Rishit0105](https://github.com/Rishit0105)
+- Project: [AI Travel Planner](https://github.com/Rishit0105/Ai-Travel-Planner)

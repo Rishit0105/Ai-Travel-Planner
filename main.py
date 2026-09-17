@@ -27,15 +27,15 @@ def get_trip_details():
 
         try:
             trip = {
-                "starting_location": input("Starting Location: "),
+                "starting_location": input("Starting Location: ").strip(),
                 "destination": input("Final Destination: ").strip().capitalize(),
-                "state": input("State Of Destination: "),
-                "start_date": input("Start Date: "),
-                "end_date": input("End Date: "),
+                "state": input("State Of Destination: ").strip(),
+                "start_date": input("Start Date: ").strip(),
+                "end_date": input("End Date: ").strip(),
                 "travellers": (input("No. of Travellers: ")),
                 "budget": (input("Enter Your Budget: ")),
                 "interests": input(
-                        "Interests (nature, adventure, food, culture, shopping): "),
+                        "Interests (nature, adventure, food, culture, shopping): ").strip(),
                 "travel_style": input(
                         "Travel Style (budget, normal, luxury): "
                 ).strip().lower()
@@ -58,7 +58,64 @@ def get_trip_details():
             except ValueError:
                 raise ValueError(
                     "Dates must be valid and use the format of DD/MM/YYYY"
-                )      
+                )
+
+            if not trip["starting_location"].strip():
+                raise ValueError("Starting location cannot be empty.")
+
+            if not trip["destination"].strip():
+                raise ValueError("Destination cannot be empty.")
+
+            if trip["travellers"] <= 0:
+                raise ValueError("Number of travellers must be greater than 0.")
+
+            if trip["budget"] <= 0:
+                raise ValueError("Budget must be greater than 0.")
+
+            if end < start:
+                raise ValueError("End date cannot be before start date.")
+
+            if end == start:
+                raise ValueError("Trip must be at least 1 night long.")
+
+            valid_styles = ["budget", "normal", "luxury"]
+
+            if trip["travel_style"] not in valid_styles:
+                raise ValueError(
+                    "Travel style must be budget, normal, or luxury."
+                )
+
+            valid_interests = [
+                "nature",
+                "adventure",
+                "food",
+                "culture",
+                "shopping"
+            ]
+
+            entered_interests = [
+                interest.strip().lower()
+                for interest in trip["interests"].split(",")
+                if interest.strip()
+            ]
+
+            if not entered_interests:
+                raise ValueError("Please enter at least one interest.")
+
+            invalid_interests = [
+                interest
+                for interest in entered_interests
+                if interest not in valid_interests
+            ]
+
+            if invalid_interests:
+                raise ValueError(
+                    "Invalid interest(s): "
+                    + ", ".join(invalid_interests)
+                    + ". Choose from nature, adventure, food, culture, shopping."
+                )
+
+            trip["interests"] = ", ".join(entered_interests)
 
             duration = end - start
 
@@ -71,8 +128,10 @@ def get_trip_details():
 
         except ValueError as error:
             print(f"Invalid Input: {error}")
-            print("Please enter the details again\n")
+            print("Please check the destination, state, and other details.")
+            print("Restart the planner and try again.")
 
+            return
 
 def print_destination_info(destination_info):
         print("\n===== VERIFIED DESTINATION =====")
@@ -107,16 +166,16 @@ def main():
 
     except ValueError as error:
         print(f"\nInput Error: {error}")
-        exit()
+        return
 
     except ConnectionError as error:
         print(f"\nNetwork Error: {error}")
         print("Please check your internet connection or try again later")
-        exit()
+        return
 
     except Exception as error:
         print(f"Unexpected Error: {error}")
-        exit()
+        return
 
     print("\n===== TRAVEL PREFERENCE =====")
     print(f"Travel Style: {trip['travel_style'].title()}")
@@ -196,38 +255,25 @@ def main():
 
     print_itinerary(itinerary)
 
-    print("\n===== PLACES TO VISIT =====")
+    for day, details in itinerary.items():
+        print(f"\n===== {day} =====")
 
-    for place in destination_info["places"]:
+        print("\nSightseeing:")
+        for place in details.get("places", []):
+            print(f"- {place['name']}")
+            print(f"  Address: {place['address']}")
 
-        print(f"\nName     : {place['name']}")
-        print(f"Address  : {place['address']}")
-        print(f"Distance : {place['distance']} metres")
+        print("\nFood:")
+        for food in details.get("food", []):
+            print(f"- {food['name']}")
+            print(f"  Category: {food['category']}")
+            print(f"  Address: {food['address']}")
 
-
-    if "food" in selected_interests:
-
-        print("\n===== FOOD PLACES =====")
-
-        for food in destination_info["food"]:
-
-            print(f"\nName     : {food['name']}")
-            print(f"Address  : {food['address']}")
-            print(f"Distance : {food['distance']} metres")
-            print(f"Category : {food['category']}")
-
-
-    if "shopping" in selected_interests:
-
-        print("\n===== SHOPPING PLACES =====")
-
-        for shopping in destination_info["shopping"]:
-
-            print(f"\nName     : {shopping['name']}")
-            print(f"Address  : {shopping['address']}")
-            print(f"Distance : {shopping['distance']} metres")
-            print(f"Category : {shopping['category']}")
-
+        print("\nShopping:")
+        for shopping in details.get("shopping", []):
+            print(f"- {shopping['name']}")
+            print(f"  Category: {shopping['category']}")
+            print(f"  Address: {shopping['address']}")
 
 if __name__ == "__main__":
     main()

@@ -20,6 +20,7 @@ def get_destination_info(trip):
     destination = trip["destination"]
     state = trip.get("state")
 
+    # Get destination services first
     services = get_destination_services(
         destination,
         state
@@ -28,16 +29,17 @@ def get_destination_info(trip):
     latitude = services["coordinates"]["latitude"]
     longitude = services["coordinates"]["longitude"]
 
+    # Transportation
     transport_options = get_transport_options(
-    trip["starting_location"],
-    destination,
-    trip["travel_date"],
-    trip["travellers"]
+        trip["starting_location"],
+        destination,
+        trip["travel_date"],
+        trip["travellers"]
     )
 
     route_information = get_route_information(
         trip["starting_location"],
-        trip["destination"]
+        destination
     )
 
     transport_options = filter_transport_options(
@@ -45,12 +47,13 @@ def get_destination_info(trip):
         trip["travel_style"]
     )
 
+    # Accommodation
     accommodation_options = get_accommodation_options(
-    destination,
-    trip["start_date"],
-    trip["end_date"],
-    trip["travellers"],
-    trip["budget"]
+        destination,
+        trip["start_date"],
+        trip["end_date"],
+        trip["travellers"],
+        trip["budget"]
     )
 
     accommodation_options = filter_accommodation_options(
@@ -58,26 +61,53 @@ def get_destination_info(trip):
         trip["travel_style"]
     )
 
+    # Select transportation
     selected_transport = select_option_within_budget(
-            transport_options,
-            trip["budget"] * 0.30
+        transport_options,
+        trip["budget"] * 0.30
     )
 
-    selected_accommodation = select_option_within_budget(
+    if selected_transport is None and transport_options:
+        selected_transport = min(
+            transport_options,
+            key=lambda transport: transport["total_price"]
+        )
+
+    # Select accommodation
+    accommodation_budget = trip["budget"] * 0.30
+
+    if trip["travel_style"].lower() == "luxury":
+        if accommodation_options:
+            selected_accommodation = max(
+                accommodation_options,
+                key=lambda accommodation: accommodation["total_price"]
+            )
+        else:
+            selected_accommodation = None
+
+    else:
+        selected_accommodation = select_option_within_budget(
             accommodation_options,
-            trip["budget"] * 0.30
-    )
+            accommodation_budget
+        )
+
+        if selected_accommodation is None and accommodation_options:
+            selected_accommodation = min(
+                accommodation_options,
+                key=lambda accommodation: accommodation["total_price"]
+            )
 
     if selected_transport is None:
         print(
-            "\n No transport option was found within the transport budget"
+            "\nNo transport option was found within the transport budget"
         )
 
     if selected_accommodation is None:
         print(
-            "\n No accommodation option was found within the accommodation budget"
+            "\nNo accommodation option was found within the accommodation budget"
         )
 
+    # Budget calculation
     budget_plan = calculate_budget(
         trip,
         selected_transport,
@@ -86,47 +116,49 @@ def get_destination_info(trip):
 
     suggest_budget_reduction(budget_plan)
 
+    # Sightseeing places
     places = get_places(
         latitude,
         longitude
     )
 
     tourist_interests = ",".join(
-    interest.strip()
-    for interest in trip["interests"].split(",")
-    if interest.strip().lower() not in ["food", "shopping"]
+        interest.strip()
+        for interest in trip["interests"].split(",")
+        if interest.strip().lower() not in ["food", "shopping"]
     )
 
     filtered_places = filter_places_by_interest(
-    places,
-    tourist_interests
+        places,
+        tourist_interests
     )
 
+    # Selected interests
     selected_interests = [
-            interest.strip().lower()
-            for interest in trip["interests"].split(",")
-            ]
+        interest.strip().lower()
+        for interest in trip["interests"].split(",")
+        if interest.strip()
+    ]
 
+    # Food places
     if "food" in selected_interests:
         food_places = get_food_places(
             latitude,
             longitude
         )
-
     else:
         food_places = []
 
-
+    # Shopping places
     if "shopping" in selected_interests:
         shopping_places = get_shopping_places(
             latitude,
             longitude
         )
-
     else:
         shopping_places = []
 
-
+    # Build destination_info only after collecting all data
     destination_info = {
         "destination": services["destination"],
         "state": services["state"],

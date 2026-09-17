@@ -3,8 +3,11 @@ def get_budget_status(remaining_budget, budget):
     if remaining_budget < 0:
         return "Over Budget"
 
-    elif remaining_budget <= budget * 0.10:
+    elif remaining_budget < budget * 0.10:
         return "Almost Over Budget"
+
+    elif remaining_budget == budget:
+        return "Budget Fully Used"
 
     else:
         return "Within Budget"
@@ -107,7 +110,8 @@ def calculate_budget(trip, selected_transport=None, selected_accommodation=None)
         accommodation = selected_accommodation["total_price"]
 
     # Emergency reserve
-    emergency = budget * 0.10
+    subtotal = transportation + accommodation + food + activities
+    emergency = subtotal * 0.10
 
     total_estimated = (
         transportation
@@ -150,6 +154,12 @@ def calculate_budget(trip, selected_transport=None, selected_accommodation=None)
             "Keep some extra money available"
         )
 
+    elif(budget_percentage_used == 100):
+        budget_warning = (
+            "Your entire budget is allocated"
+            "Keep extra money available for unexpected expenses."
+        )
+
     else: 
         budget_warning = (
             "Your estimated trip is comfortably within budget"
@@ -188,12 +198,17 @@ def print_budget_status(budget_plan):
     if budget_plan["budget_status"] == "Over Budget":
         print("\nWARNING:")
         print(budget_plan["budget_warning"])
+
+    elif budget_plan["budget_status"] == "Almost Over Budget":
+        print("\nWARNING:")
+        print(budget_plan["budget_warning"])
+
     else:
         print("\nYour trip is within the budget.")
 
 
 def suggest_budget_reduction(budget_plan):
-    if budget_plan["budget_status"] == "Over Budget":
+    if budget_plan["budget_status"] != "Over Budget":
         print("\n Your current plan doesnt require budget reduction")
         return 
     
@@ -210,7 +225,7 @@ def suggest_budget_reduction(budget_plan):
 
     print("\nRecommended actions:")
 
-    if budget_plan["highest_expense_category"] == "transportation":
+    if budget_plan["highest_expense_category"] == "Transportation":
         print("1. Choose a cheaper transport option.")
         print("2. Compare bus, train, and flight prices.")
         print("3. Consider travelling on a cheaper date.")

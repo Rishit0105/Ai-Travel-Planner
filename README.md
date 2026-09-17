@@ -2,6 +2,13 @@
 
 An AI-powered travel planning application that creates budget-conscious trips with transport, accommodation, activities, food, shopping, and day-wise itineraries.
 
+## Project Highlights
+
+- Designed with a modular Python architecture
+- Uses APIs for real-world travel data
+- Includes budget-aware recommendations
+- Generates and saves personalized itineraries
+
 ## Features
 
 - Budget-based travel planning

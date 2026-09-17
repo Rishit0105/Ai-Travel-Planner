@@ -19,10 +19,7 @@ def get_route_information(
         )
 
     start_coordinates = get_coordinates(starting_location)
-    destination_coordinates = get_coordinates(
-                                destination,
-                                state="Himachal Pradesh"
-                                )
+    destination_coordinates = get_coordinates(destination)
 
     start_latitude = start_coordinates["latitude"]
     start_longitude = start_coordinates["longitude"]
@@ -45,8 +42,8 @@ def get_route_information(
         timeout=20
     )
 
-    print("Status:", response.status_code)
-    print("Response:", response.text)
+    #print("Status:", response.status_code)
+    #print("Response:", response.text)
 
     if response.status_code == 401:
         raise ConnectionError(

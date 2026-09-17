@@ -1,12 +1,17 @@
 import json
 
 
-def save_trip_plan(trip_plan, filename="trip_plan.json"):
+def save_trip_plan(trip, destination_info, itinerary, filename="trip_plan.json"):
+    trip_plan = {
+        "trip": trip,
+        "destination_info": destination_info,
+        "itinerary": itinerary
+    }
+
     with open(filename, "w", encoding="utf-8") as file:
         json.dump(trip_plan, file, indent=4, ensure_ascii=False)
 
     print(f"Trip plan saved to {filename}")
-
 
 def load_trip_plan(filename="trip_plan.json"):
         try:

@@ -1,0 +1,811 @@
+{
+    "trip": {
+        "starting_location": "Delhi",
+        "destination": "Jaipur",
+        "state": "Rajasthan",
+        "start_date": "20/09/2026",
+        "end_date": "23/09/2026",
+        "travellers": 2,
+        "budget": 800000.0,
+        "interests": "nature, food, adventure, culture, shopping",
+        "travel_style": "luxury",
+        "nights": 3,
+        "travel_days": 4,
+        "travel_date": "20/09/2026"
+    },
+    "destination_info": {
+        "destination": "Jaipur",
+        "state": "Rajasthan",
+        "country": "India",
+        "coordinates": {
+            "latitude": 26.91962,
+            "longitude": 75.78781
+        },
+        "temperature": 24.2,
+        "places": [
+            {
+                "name": "Shaheed Smarak",
+                "address": "Shaheed Smarak, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "latitude": 26.917412769096945,
+                "longitude": 75.80164920032914,
+                "distance": 1396,
+                "category": [
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial"
+                ]
+            },
+            {
+                "name": "Paanch Batti",
+                "address": "Paanch Batti, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "latitude": 26.9162485,
+                "longitude": 75.8098572,
+                "distance": 2222,
+                "category": [
+                    "access",
+                    "access.yes",
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial",
+                    "tourism.sights.memorial.monument"
+                ]
+            },
+            {
+                "name": "Diwan-i-Khas",
+                "address": "Diwan-i-Khas, Tripolia Bazaar, Ramganj, Jaipur - 302001, Rajasthan, India",
+                "latitude": 26.926460876856204,
+                "longitude": 75.82386406694067,
+                "distance": 3660,
+                "category": [
+                    "building",
+                    "building.historic",
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial",
+                    "tourism.sights.memorial.monument"
+                ]
+            },
+            {
+                "name": "Royal Gaitor",
+                "address": "Royal Gaitor, New Rambah Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "latitude": 26.942913272745294,
+                "longitude": 75.8246611316466,
+                "distance": 4478,
+                "category": [
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial",
+                    "tourism.sights.memorial.monument"
+                ]
+            },
+            {
+                "name": "Suraj Pol Gate",
+                "address": "Suraj Pol Gate, Galta Road, Ramganj, Jaipur - 302001, Rajasthan, India",
+                "latitude": 26.919162662690553,
+                "longitude": 75.844920880675,
+                "distance": 5673,
+                "category": [
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial",
+                    "tourism.sights.memorial.monument"
+                ]
+            },
+            {
+                "name": "Sheesh Mahal",
+                "address": "Sheesh Mahal, Amber palace, to Jaigarh Fort, kundalaoo Colony, Jaipur Municipal Corporation - 302001, Rajasthan, India",
+                "latitude": 26.9854678,
+                "longitude": 75.8500935,
+                "distance": 9565,
+                "category": [
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial",
+                    "tourism.sights.memorial.monument"
+                ]
+            },
+            {
+                "name": "Ganesh Pol",
+                "address": "Ganesh Pol, to Jaigarh Fort, kundalaoo Colony, Jaipur Municipal Corporation - 303101, Rajasthan, India",
+                "latitude": 26.9860938,
+                "longitude": 75.8505898,
+                "distance": 9649,
+                "category": [
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial",
+                    "tourism.sights.memorial.monument"
+                ]
+            },
+            {
+                "name": "Amer Fort",
+                "address": "Amber Fort, to Jaigarh Fort, kundalaoo Colony, Jaipur Municipal Corporation - 303101, Rajasthan, India",
+                "latitude": 26.9863104,
+                "longitude": 75.8506607,
+                "distance": 9672,
+                "category": [
+                    "heritage",
+                    "heritage.unesco",
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.archaeological_site"
+                ]
+            },
+            {
+                "name": "Stepwell Panna Meena",
+                "address": "Stepwell Panna Meena, Amer Road, Saraswat Ka Mohalla, Jaipur Municipal Corporation - 303101, Rajasthan, India",
+                "latitude": 26.991207592701095,
+                "longitude": 75.85122700454961,
+                "distance": 10128,
+                "category": [
+                    "man_made",
+                    "tourism",
+                    "tourism.sights",
+                    "tourism.sights.memorial",
+                    "tourism.sights.memorial.monument"
+                ]
+            }
+        ],
+        "treks": [],
+        "food": [
+            {
+                "name": "Khandelwal",
+                "address": "Khandelwal, Ram Mandir Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 149,
+                "category": "Restaurant"
+            },
+            {
+                "name": "Roop Basant Pavitra Bhojanalaya",
+                "address": "Roop Basant Pavitra Bhojanalaya, Ram Mandir Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 150,
+                "category": "Restaurant"
+            },
+            {
+                "name": "Krishna Bhojnalya",
+                "address": "Krishna Bhojnalya, Hasanpura Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 313,
+                "category": "Restaurant"
+            },
+            {
+                "name": "Atithi",
+                "address": "Atithi, Hasanpura Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 330,
+                "category": "Restaurant"
+            },
+            {
+                "name": "Peshawri",
+                "address": "Peshawri, Khasa Kothi Flyover, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 347,
+                "category": "Restaurant"
+            },
+            {
+                "name": "J. K",
+                "address": "J. K, Ram Mandir Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 365,
+                "category": "Restaurant"
+            },
+            {
+                "name": "Shri Krishna Restaurant",
+                "address": "Shri Krishna Restaurant, Kabir Marg, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 519,
+                "category": "Restaurant"
+            }
+        ],
+        "shopping": [
+            {
+                "name": "Sindhi Colony Market",
+                "address": "Sindhi Colony Market, Indra Colony, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 1578,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Chameliwala Market",
+                "address": "Chameliwala Market, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 1724,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Sikar House , Jaipur",
+                "address": "Sikar House , Jaipur, Jhotbara Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 2063,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Jayanti Market",
+                "address": "Jayanti Market, New Colony Jaipur, Rajasthan 302007, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 2121,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Tribes India",
+                "address": "Tribes India, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                "distance": 2813,
+                "category": [
+                    "commercial",
+                    "commercial.gift_and_souvenir"
+                ]
+            },
+            {
+                "name": "Fruits and Vegetable Market",
+                "address": "Fruits and Vegetable Market, Ajmer Road, Sodala, Jaipur - 302001, Rajasthan, India",
+                "distance": 3027,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Часы и обмен денег",
+                "address": "Часы и обмен денег, Chaura Rasta, Ramganj, Jaipur - 302001, Rajasthan, India",
+                "distance": 3329,
+                "category": [
+                    "commercial",
+                    "commercial.gift_and_souvenir"
+                ]
+            },
+            {
+                "name": "Palika Bazaar",
+                "address": "Palika Bazaar, Bhagwan Marg, Ram Nagar, Jaipur - 302001, Rajasthan, India",
+                "distance": 3528,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "Big Bazaar",
+                "address": "Big Bazaar, Bhagwan Marg, Ram Nagar, Jaipur - 302001, Rajasthan, India",
+                "distance": 3552,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "Bajaj Nagar Shopping Center",
+                "address": "Bajaj Nagar Shopping Center, Tonk Road Flyover, Tonk Phatak, Jaipur - 302001, Rajasthan, India",
+                "distance": 4844,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "National Handloom - Vaishali Nagar",
+                "address": "National Handloom - Vaishali Nagar, Guman Square, Vaishali Marg, Rajendra Nagar, Jaipur - 302021, Rajasthan, India",
+                "distance": 4989,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "saraf carpet and textiles (LLP)",
+                "address": "saraf carpet and textiles (LLP), Amer Road, Ramganj, Jaipur - 302002, Rajasthan, India",
+                "distance": 5154,
+                "category": [
+                    "commercial",
+                    "commercial.gift_and_souvenir"
+                ]
+            },
+            {
+                "name": "Pink Square Mall",
+                "address": "Pink Square Mall, Govind Marg, Janata Colony, Jaipur - 302001, Rajasthan, India",
+                "distance": 5180,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "Sun n Moon",
+                "address": "Sun n Moon, Jaipur Road, Vidyadhar Nagar, Jaipur - 302001, Rajasthan, India",
+                "distance": 5756,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "sabji mandi",
+                "address": "sabji mandi, Kedia Palace Road, Vidyadhar Nagar, Jaipur - 302001, Rajasthan, India",
+                "distance": 6127,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Big Bazar",
+                "address": "Big Bazar, Tonk Road, Jaipur - 302001, Rajasthan, India",
+                "distance": 6154,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "वर्ल्ड ट्रेड पार्क",
+                "address": "World Trade Park, JLN Marg Flyover, Jaipur Municipal Corporation - 302018, Rajasthan, India",
+                "distance": 7526,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "Satkar Shopping Center",
+                "address": "Satkar Shopping Center, Shivanand Marg, Jagatpura, Jaipur Municipal Corporation - 302014, Rajasthan, India",
+                "distance": 8201,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "jaipur traditional center",
+                "address": "jaipur traditional center, Jawahar Circle, Jaipur Municipal Corporation - 302018, Rajasthan, India",
+                "distance": 8692,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            },
+            {
+                "name": "MONDAY MARKET GROUND",
+                "address": "MONDAY MARKET GROUND, NIWARU LINK ROAD, Niwaru, Jaipur - 302001, Rajasthan, India",
+                "distance": 9170,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Patel Plaza",
+                "address": "Patel Plaza, SH2C;90, Jothwara, Jaipur - 302001, Rajasthan, India",
+                "distance": 9178,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "LN Plaza",
+                "address": "LN Plaza, NIWARU LINK ROAD, Niwaru, Jaipur - 302001, Rajasthan, India",
+                "distance": 9219,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "Narayan Market",
+                "address": "Narayan Market, NIWARU LINK ROAD, Niwaru, Jaipur - 302001, Rajasthan, India",
+                "distance": 9371,
+                "category": [
+                    "commercial.marketplace"
+                ]
+            },
+            {
+                "name": "jtm mall jagatpura",
+                "address": "jtm mall jagatpura, Entry, Jagatpura, Jaipur Municipal Corporation - 302017, Rajasthan, India",
+                "distance": 10178,
+                "category": [
+                    "commercial",
+                    "commercial.shopping_mall"
+                ]
+            }
+        ],
+        "transport_options": [
+            {
+                "mode": "Bus",
+                "provider": "Example Bus",
+                "duration_hours": 7,
+                "price_per_person": 800,
+                "total_price": 1600,
+                "currency": "INR"
+            }
+        ],
+        "accommodation_options": [
+            {
+                "name": "Budget Hotel",
+                "location": "Jaipur",
+                "check_in": "20/09/2026",
+                "check_out": "23/09/2026",
+                "price_per_night": 2500,
+                "nights": 3,
+                "rooms": 1,
+                "total_price": 7500,
+                "currency": "INR"
+            },
+            {
+                "name": "Comfort Hotel",
+                "location": "Jaipur",
+                "check_in": "20/09/2026",
+                "check_out": "23/09/2026",
+                "price_per_night": 4000,
+                "nights": 3,
+                "rooms": 1,
+                "total_price": 12000,
+                "currency": "INR"
+            },
+            {
+                "name": "Luxury Resort",
+                "location": "Jaipur",
+                "check_in": "20/09/2026",
+                "check_out": "23/09/2026",
+                "price_per_night": 7000,
+                "nights": 3,
+                "rooms": 1,
+                "total_price": 21000,
+                "currency": "INR"
+            }
+        ],
+        "selected_transport": {
+            "mode": "Bus",
+            "provider": "Example Bus",
+            "duration_hours": 7,
+            "price_per_person": 800,
+            "total_price": 1600,
+            "currency": "INR"
+        },
+        "selected_accommodation": {
+            "name": "Luxury Resort",
+            "location": "Jaipur",
+            "check_in": "20/09/2026",
+            "check_out": "23/09/2026",
+            "price_per_night": 7000,
+            "nights": 3,
+            "rooms": 1,
+            "total_price": 21000,
+            "currency": "INR"
+        },
+        "route_information": {
+            "starting_location": "Delhi",
+            "destination": "Jaipur",
+            "distance_km": 307.15,
+            "duration_hours": 3.1,
+            "duration_minutes": 186
+        },
+        "budget_plan": {
+            "transportation": 1600,
+            "accommodation": 21000,
+            "food": 12000,
+            "activities": 8000,
+            "emergency": 4260.0,
+            "total_estimated": 46860.0,
+            "highest_expense_category": "Accommodation",
+            "highest_expense_amount": 21000,
+            "budget_percentage_used": 5.8575,
+            "budget_warning": "Your estimated trip is comfortably within budget",
+            "remaining_budget": 753140.0,
+            "budget_status": "Within Budget"
+        }
+    },
+    "itinerary": {
+        "Day 1": {
+            "places": [
+                {
+                    "name": "Shaheed Smarak",
+                    "address": "Shaheed Smarak, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "distance": 1396
+                },
+                {
+                    "name": "Suraj Pol Gate",
+                    "address": "Suraj Pol Gate, Galta Road, Ramganj, Jaipur - 302001, Rajasthan, India",
+                    "distance": 5673
+                },
+                {
+                    "name": "Stepwell Panna Meena",
+                    "address": "Stepwell Panna Meena, Amer Road, Saraswat Ka Mohalla, Jaipur Municipal Corporation - 303101, Rajasthan, India",
+                    "distance": 10128
+                }
+            ],
+            "food": [
+                {
+                    "name": "Khandelwal",
+                    "address": "Khandelwal, Ram Mandir Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": "Restaurant",
+                    "distance": 149
+                },
+                {
+                    "name": "Peshawri",
+                    "address": "Peshawri, Khasa Kothi Flyover, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": "Restaurant",
+                    "distance": 347
+                }
+            ],
+            "shopping": [
+                {
+                    "name": "Sindhi Colony Market",
+                    "address": "Sindhi Colony Market, Indra Colony, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 1578
+                },
+                {
+                    "name": "Tribes India",
+                    "address": "Tribes India, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.gift_and_souvenir"
+                    ],
+                    "distance": 2813
+                },
+                {
+                    "name": "Big Bazaar",
+                    "address": "Big Bazaar, Bhagwan Marg, Ram Nagar, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 3552
+                },
+                {
+                    "name": "Pink Square Mall",
+                    "address": "Pink Square Mall, Govind Marg, Janata Colony, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 5180
+                },
+                {
+                    "name": "वर्ल्ड ट्रेड पार्क",
+                    "address": "World Trade Park, JLN Marg Flyover, Jaipur Municipal Corporation - 302018, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 7526
+                },
+                {
+                    "name": "Patel Plaza",
+                    "address": "Patel Plaza, SH2C;90, Jothwara, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 9178
+                }
+            ]
+        },
+        "Day 2": {
+            "places": [
+                {
+                    "name": "Paanch Batti",
+                    "address": "Paanch Batti, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "distance": 2222
+                },
+                {
+                    "name": "Sheesh Mahal",
+                    "address": "Sheesh Mahal, Amber palace, to Jaigarh Fort, kundalaoo Colony, Jaipur Municipal Corporation - 302001, Rajasthan, India",
+                    "distance": 9565
+                }
+            ],
+            "food": [
+                {
+                    "name": "Roop Basant Pavitra Bhojanalaya",
+                    "address": "Roop Basant Pavitra Bhojanalaya, Ram Mandir Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": "Restaurant",
+                    "distance": 150
+                },
+                {
+                    "name": "J. K",
+                    "address": "J. K, Ram Mandir Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": "Restaurant",
+                    "distance": 365
+                }
+            ],
+            "shopping": [
+                {
+                    "name": "Chameliwala Market",
+                    "address": "Chameliwala Market, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 1724
+                },
+                {
+                    "name": "Fruits and Vegetable Market",
+                    "address": "Fruits and Vegetable Market, Ajmer Road, Sodala, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 3027
+                },
+                {
+                    "name": "Bajaj Nagar Shopping Center",
+                    "address": "Bajaj Nagar Shopping Center, Tonk Road Flyover, Tonk Phatak, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 4844
+                },
+                {
+                    "name": "Sun n Moon",
+                    "address": "Sun n Moon, Jaipur Road, Vidyadhar Nagar, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 5756
+                },
+                {
+                    "name": "Satkar Shopping Center",
+                    "address": "Satkar Shopping Center, Shivanand Marg, Jagatpura, Jaipur Municipal Corporation - 302014, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 8201
+                },
+                {
+                    "name": "LN Plaza",
+                    "address": "LN Plaza, NIWARU LINK ROAD, Niwaru, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 9219
+                }
+            ]
+        },
+        "Day 3": {
+            "places": [
+                {
+                    "name": "Diwan-i-Khas",
+                    "address": "Diwan-i-Khas, Tripolia Bazaar, Ramganj, Jaipur - 302001, Rajasthan, India",
+                    "distance": 3660
+                },
+                {
+                    "name": "Ganesh Pol",
+                    "address": "Ganesh Pol, to Jaigarh Fort, kundalaoo Colony, Jaipur Municipal Corporation - 303101, Rajasthan, India",
+                    "distance": 9649
+                }
+            ],
+            "food": [
+                {
+                    "name": "Krishna Bhojnalya",
+                    "address": "Krishna Bhojnalya, Hasanpura Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": "Restaurant",
+                    "distance": 313
+                },
+                {
+                    "name": "Shri Krishna Restaurant",
+                    "address": "Shri Krishna Restaurant, Kabir Marg, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": "Restaurant",
+                    "distance": 519
+                }
+            ],
+            "shopping": [
+                {
+                    "name": "Sikar House , Jaipur",
+                    "address": "Sikar House , Jaipur, Jhotbara Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 2063
+                },
+                {
+                    "name": "Часы и обмен денег",
+                    "address": "Часы и обмен денег, Chaura Rasta, Ramganj, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.gift_and_souvenir"
+                    ],
+                    "distance": 3329
+                },
+                {
+                    "name": "National Handloom - Vaishali Nagar",
+                    "address": "National Handloom - Vaishali Nagar, Guman Square, Vaishali Marg, Rajendra Nagar, Jaipur - 302021, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 4989
+                },
+                {
+                    "name": "sabji mandi",
+                    "address": "sabji mandi, Kedia Palace Road, Vidyadhar Nagar, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 6127
+                },
+                {
+                    "name": "jaipur traditional center",
+                    "address": "jaipur traditional center, Jawahar Circle, Jaipur Municipal Corporation - 302018, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 8692
+                },
+                {
+                    "name": "Narayan Market",
+                    "address": "Narayan Market, NIWARU LINK ROAD, Niwaru, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 9371
+                }
+            ]
+        },
+        "Day 4": {
+            "places": [
+                {
+                    "name": "Royal Gaitor",
+                    "address": "Royal Gaitor, New Rambah Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "distance": 4478
+                },
+                {
+                    "name": "Amer Fort",
+                    "address": "Amber Fort, to Jaigarh Fort, kundalaoo Colony, Jaipur Municipal Corporation - 303101, Rajasthan, India",
+                    "distance": 9672
+                }
+            ],
+            "food": [
+                {
+                    "name": "Atithi",
+                    "address": "Atithi, Hasanpura Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": "Restaurant",
+                    "distance": 330
+                }
+            ],
+            "shopping": [
+                {
+                    "name": "Jayanti Market",
+                    "address": "Jayanti Market, New Colony Jaipur, Rajasthan 302007, Mirza Ismail Road, Bani Park, Jaipur - 302006, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 2121
+                },
+                {
+                    "name": "Palika Bazaar",
+                    "address": "Palika Bazaar, Bhagwan Marg, Ram Nagar, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 3528
+                },
+                {
+                    "name": "saraf carpet and textiles (LLP)",
+                    "address": "saraf carpet and textiles (LLP), Amer Road, Ramganj, Jaipur - 302002, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.gift_and_souvenir"
+                    ],
+                    "distance": 5154
+                },
+                {
+                    "name": "Big Bazar",
+                    "address": "Big Bazar, Tonk Road, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 6154
+                },
+                {
+                    "name": "MONDAY MARKET GROUND",
+                    "address": "MONDAY MARKET GROUND, NIWARU LINK ROAD, Niwaru, Jaipur - 302001, Rajasthan, India",
+                    "category": [
+                        "commercial.marketplace"
+                    ],
+                    "distance": 9170
+                },
+                {
+                    "name": "jtm mall jagatpura",
+                    "address": "jtm mall jagatpura, Entry, Jagatpura, Jaipur Municipal Corporation - 302017, Rajasthan, India",
+                    "category": [
+                        "commercial",
+                        "commercial.shopping_mall"
+                    ],
+                    "distance": 10178
+                }
+            ]
+        }
+    }
+}

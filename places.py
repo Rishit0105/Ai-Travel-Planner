@@ -1,8 +1,6 @@
 import os
-
 import requests
 from dotenv import load_dotenv
-
 
 load_dotenv()
 
@@ -16,76 +14,68 @@ def get_places(latitude, longitude):
             "GEOAPIFY_API_KEY is missing from the .env file."
         )
 
-    try:
-        response = requests.get(
-            "https://api.geoapify.com/v2/places",
-            params={
-                "categories": "tourism",
-                "filter": f"circle:{longitude},{latitude},5000",
-                "bias": f"proximity:{longitude},{latitude}",
-                "limit": 20,
-                "apiKey": api_key
-            },
-            timeout=20
+    response = requests.get(
+        "https://api.geoapify.com/v2/places",
+        params={
+            "categories": "tourism.sights",
+            "filter": f"circle:{longitude},{latitude},15000",
+            "bias": f"proximity:{longitude},{latitude}",
+            "limit": 50,
+            "apiKey": api_key
+        },
+        timeout=20
+    )
+
+    if response.status_code == 401:
+        raise ConnectionError(
+            "Geoapify rejected the API key. Check your API key."
         )
 
-        response.raise_for_status()
-        data = response.json()
+    if response.status_code == 400:
+        raise ValueError(
+            f"Invalid Geoapify places request: {response.text}"
+        )
 
-    except requests.exceptions.RequestException as error:
-        print("Unable to fetch sightseeing places.")
-        print("Error:", error)
-        return []
+    response.raise_for_status()
+
+    data = response.json()
+    features = data.get("features", [])
 
     places = []
 
-    for feature in data.get("features", []):
+    for feature in features:
 
         properties = feature.get("properties", {})
+        geometry = feature.get("geometry", {})
 
-        name = properties.get("name")
+        coordinates = geometry.get("coordinates", [])
 
-        if not name:
+        if len(coordinates) < 2:
             continue
 
-        place = {
-            "name": name,
-            "address": properties.get("formatted"),
-            "latitude": properties.get("lat"),
-            "longitude": properties.get("lon"),
-            "distance": properties.get("distance"),
-            "category": properties.get("category")
-        }
+        places.append({
+            "name": properties.get(
+                "name",
+                "Unnamed place"
+            ),
 
-        places.append(place)
+            "address": properties.get(
+                "formatted",
+                "Address unavailable"
+            ),
+
+            "latitude": coordinates[1],
+            "longitude": coordinates[0],
+
+            "distance": properties.get(
+                "distance",
+                0
+            ),
+
+            "category": properties.get(
+                "categories",
+                ""
+            )
+        })
 
     return places
-
-
-if __name__ == "__main__":
-
-    try:
-
-        places = get_places(
-            32.2574,
-            77.17481
-        )
-
-        print("\n===== PLACES TO VISIT =====")
-
-        for place in places:
-
-            print(f"\nName     : {place['name']}")
-            print(f"Address  : {place['address']}")
-            print(f"Distance : {place['distance']} metres")
-            print(f"Category : {place['category']}")
-
-    except requests.exceptions.RequestException as error:
-
-        print("Geoapify request failed.")
-        print(error)
-
-    except ValueError as error:
-
-        print("Configuration error.")
-        print(error)

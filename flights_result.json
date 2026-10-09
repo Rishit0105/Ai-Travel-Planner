@@ -1,0 +1,182 @@
+[
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "8:45\u202fAM\n \u2013 \n11:00\u202fAM",
+    "arrival": "",
+    "duration": "2 hr 15 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "9:00\u202fAM\n \u2013 \n11:15\u202fAM",
+    "arrival": "",
+    "duration": "2 hr 15 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Akasa Air",
+    "flight_number": "",
+    "departure": "8:40\u202fAM\n \u2013 \n11:05\u202fAM",
+    "arrival": "",
+    "duration": "2 hr 25 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b913,483"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "3:00\u202fAM\n \u2013 \n5:20\u202fAM",
+    "arrival": "",
+    "duration": "2 hr 20 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "5:00\u202fAM\n \u2013 \n7:15\u202fAM",
+    "arrival": "",
+    "duration": "2 hr 15 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "5:00\u202fAM\n \u2013 \n7:25\u202fAM",
+    "arrival": "",
+    "duration": "2 hr 25 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "9:30\u202fAM\n \u2013 \n11:55\u202fAM",
+    "arrival": "",
+    "duration": "2 hr 25 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "9:30\u202fAM\n \u2013 \n12:00\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 30 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "10:00\u202fAM\n \u2013 \n12:25\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 25 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "10:15\u202fAM\n \u2013 \n12:35\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 20 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "10:30\u202fAM\n \u2013 \n12:50\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 20 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "11:00\u202fAM\n \u2013 \n1:15\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 15 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "11:00\u202fAM\n \u2013 \n1:25\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 25 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "12:00\u202fPM\n \u2013 \n2:15\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 15 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "1:00\u202fPM\n \u2013 \n3:10\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 10 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "1:30\u202fPM\n \u2013 \n3:50\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 20 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "2:00\u202fPM\n \u2013 \n4:25\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 25 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "Air India",
+    "flight_number": "",
+    "departure": "2:10\u202fPM\n \u2013 \n4:35\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 25 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "2:45\u202fPM\n \u2013 \n5:00\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 15 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  },
+  {
+    "airline": "IndiGo",
+    "flight_number": "",
+    "departure": "3:30\u202fPM\n \u2013 \n5:45\u202fPM",
+    "arrival": "",
+    "duration": "2 hr 15 min\nDEL\u2013BOM",
+    "stops": "Nonstop",
+    "price": "\u20b912,793"
+  }
+]

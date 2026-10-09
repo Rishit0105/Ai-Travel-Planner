@@ -1,5 +1,5 @@
 from datetime import datetime
-from budget import (print_budget_summary, print_budget_status, suggest_budget_reduction)
+from budget import (calculate_budget,print_budget_summary, print_budget_status, suggest_budget_reduction)
 from planner import get_destination_info
 from exporter import save_trip_plan, print_itinerary
 from itinerary import generate_itinerary
@@ -59,6 +59,7 @@ def get_trip_details():
                 raise ValueError(
                     "Dates must be valid and use the format of DD/MM/YYYY"
                 )
+            
 
             if not trip["starting_location"].strip():
                 raise ValueError("Starting location cannot be empty.")
@@ -131,7 +132,7 @@ def get_trip_details():
             print("Please check the destination, state, and other details.")
             print("Restart the planner and try again.")
 
-            return
+            continue
 
 def print_destination_info(destination_info):
         print("\n===== VERIFIED DESTINATION =====")
@@ -152,6 +153,274 @@ def print_destination_info(destination_info):
                 f"Estimated driving time: "
                 f"{destination_info['route_information']['duration_hours']} hours"
                 )
+        
+
+def select_transport_by_user(
+        transport_estimates,
+        recommended_transport_budget,
+        starting_location,
+        destination,
+        travel_date,
+        travellers,
+        route_information
+):
+    
+    if not transport_estimates:
+        print("\nNo Transport estimates available")
+        return None
+
+    print("\n" + "=" * 55)
+    print("              TRANSPORT OPTIONS")
+    print("=" * 55)
+
+    print(
+        f"Recommended Transport Budget: "
+        f"₹{recommended_transport_budget:,.2f}"
+    )
+
+    modes = ["Flight", "Bus", "Train", "Cab"]
+
+    available_modes = []
+
+    for mode in modes:
+        estimate = transport_estimates.get(mode)
+
+        if not estimate:
+            continue
+
+        approximate_price = estimate.get("approx_price")
+
+        if approximate_price is None:
+            continue
+
+        available_modes.append(mode)
+
+        print("\n" + "-" * 55)
+        print(f"Option {len(available_modes)}")
+        print(f"Mode          : {mode}")
+        print(
+            f"Approx. Price : "
+            f"₹{approximate_price:,.2f}"
+        )
+        print(
+            f"Price Type    : "
+            f"{estimate.get('price_type', 'N/A')}"
+        )
+
+    print("\n" + "=" * 55)
+    while True:
+        try:
+            choice = int(
+                input(
+                    f"\nSelect transport type "
+                    f"(1-{len(available_modes)}): "
+                )
+            )
+
+            if (
+                choice < 1
+                or choice > len(available_modes)
+            ):
+                print("Please select a valid option.")
+                continue
+
+            selected_mode = available_modes[choice - 1]
+
+            print(
+                f"\nYou selected: {selected_mode}"
+            )
+
+            break
+
+        except ValueError:
+            print(
+                "Please enter the number of the "
+                "transport type."
+            )
+
+    from transportation import get_transport_options
+
+    detailed_options = get_transport_options(
+
+    mode=selected_mode,
+    starting_location=starting_location,
+    destination=destination,
+    travel_date=travel_date,
+    travellers=travellers,
+    route_information=route_information
+    )
+
+    if not detailed_options:
+        print(
+            f"\n No detailed {selected_mode} options"
+            f"are currently available"
+        )
+
+    print("\n" + "=" * 55)
+    print(f"          AVAILABLE {selected_mode.upper()} OPTIONS")
+    print("=" * 55)
+
+    for index, transport in enumerate(
+        detailed_options,
+        start=1
+    ):
+        total_price = transport["total_price"]
+
+        print("\n" + "-" * 55)
+        print(f"Option {index}")
+        print(f"Mode     : {transport['mode']}")
+        print(f"Provider : {transport['provider']}")
+
+        if transport.get("duration_hours") is not None:
+            print(
+                f"Duration : "
+                f"{transport['duration_hours']} hours"
+            )
+
+        print(
+            f"Price/person : "
+            f"₹{transport['price_per_person']:,.2f}"
+        )
+
+        print(
+            f"Total price  : "
+            f"₹{total_price:,.2f}"
+        )
+
+        print(
+            f"Price type   : "
+            f"{transport.get('price_type', 'N/A')}"
+        )
+
+        if transport["mode"].lower() == "flight":
+
+            if transport.get("stops") is not None:
+                print(
+                    f"Stops        : "
+                    f"{transport['stops']}"
+                )
+
+            if transport.get("departure_time"):
+                print(
+                    f"Departure    : "
+                    f"{transport['departure_time']}"
+                )
+
+            if transport.get("arrival_time"):
+                print(
+                    f"Arrival      : "
+                    f"{transport['arrival_time']}"
+                )
+
+        if transport["mode"].lower() == "bus":
+
+            if transport.get("bus_type"):
+                print(
+                    f"Bus Type     : "
+                    f"{transport['bus_type']}"
+                )
+
+            if transport.get("departure_time"):
+                print(
+                    f"Departure    : "
+                    f"{transport['departure_time']}"
+                )
+
+            if transport.get("arrival_time"):
+                print(
+                    f"Arrival      : "
+                    f"{transport['arrival_time']}"
+                )
+
+            if transport.get("seats_available") is not None:
+                print(
+                    f"Seats        : "
+                    f"{transport['seats_available']}"
+                )
+
+            if transport.get("rating") is not None:
+                print(
+                    f"Rating       : "
+                    f"{transport['rating']}"
+                )
+
+        print("\n" + "=" * 55)
+
+    while True:
+        try:
+            choice = int(
+                input(
+                    f"\nSelect {selected_mode.lower()} option "
+                    f"(1-{len(detailed_options)}): "
+                )
+            )
+
+            if (
+                choice < 1
+                or choice > len(detailed_options)
+            ):
+                print("Please select a valid option.")
+                continue
+
+            selected_transport = (
+                detailed_options[choice - 1]
+            )
+
+            selected_price = selected_transport["total_price"]
+
+            break
+
+        except ValueError:
+            print(
+                "Please enter the number of the "
+                f"{selected_mode.lower()} option."
+            )
+
+    difference = (
+        selected_price -
+        recommended_transport_budget
+    )
+
+    if difference > 0:
+
+        print(
+            "\nWARNING: This option exceeds your "
+            "recommended transport budget."
+        )
+
+        print(
+            f"Recommended Transport Budget: "
+            f"₹{recommended_transport_budget:,.2f}"
+        )
+
+        print(
+            f"Selected Transport Cost: "
+            f"₹{selected_price:,.2f}"
+        )
+
+        print(
+            f"Amount Over Recommendation: "
+            f"₹{difference:,.2f}"
+        )
+
+        confirm = input(
+            "\nDo you still want to select "
+            "this option? (yes/no): "
+        ).strip().lower()
+
+        if confirm not in ["yes", "y"]:
+            return select_transport_by_user(
+                transport_estimates,
+                recommended_transport_budget,
+                starting_location,
+                destination,
+                travel_date,
+                travellers,
+                route_information
+            )
+
+    return selected_transport
+
 
 def main():
 
@@ -162,11 +431,15 @@ def main():
     # Get trip details from the user
     try:
         trip = get_trip_details()
+
+        if trip is None:
+            print("\nTrip creation cancelled due to invalid input.")
+            return
+    
         destination_info = get_destination_info(trip)
 
     except ValueError as error:
         print(f"\nInput Error: {error}")
-        return
 
     except ConnectionError as error:
         print(f"\nNetwork Error: {error}")
@@ -189,31 +462,55 @@ def main():
     print_destination_info(destination_info)
 
 
-    print("\n===== TRANSPORT OPTIONS =====")
+    recommended_transport_budget = (destination_info["recommended_transport_budget"])
 
-    for transport in destination_info["transport_options"]:
-        print(f"Mode: {transport['mode']}")
-        print(f"Provider: {transport['provider']}")
-        print(f"From: {trip['starting_location']}")
-        print(f"To: {trip['destination']}")
-        print(f"Duration: {transport['duration_hours']} hours")
-        print(f"Price per person: ₹{transport['price_per_person']}")
-        print(f"Total price: ₹{transport['total_price']}")
-        print()
+    selected_transport = select_transport_by_user(
+        destination_info["transport_estimates"],
+        destination_info["recommended_transport_budget"],
+        trip["starting_location"],
+        trip["destination"],
+        trip["start_date"],
+        trip["travellers"],
+        destination_info["route_information"]
+    )
 
-
-    selected_transport = destination_info["selected_transport"]
+    destination_info["selected_transport"] = selected_transport
 
     if selected_transport:
-        print("\nSelected Transport:")
-        print(f"Mode: {selected_transport.get('mode', 'N/A')}")
-        print(f"Provider: {selected_transport.get('provider', 'N/A')}")
-        print(f"From: {selected_transport.get('from_location', trip['starting_location'])}")
-        print(f"To: {selected_transport.get('to_location', trip['destination'])}")
-        print(f"Price per person: ₹{selected_transport.get('price_per_person', 'N/A')}")
-        print(f"Total price: ₹{selected_transport.get('total_price', 'N/A')}")
+        print("===== SELECTED TRANSPORT =====")
+
+        print(
+            f"Mode: "
+            f"{selected_transport.get('mode', 'N/A')}"
+        )
+
+        print(
+            f"Provider: "
+            f"{selected_transport.get('provider', 'N/A')}"
+        )
+
+        print(
+            f"From: "
+            f"{trip['starting_location']}"
+        )
+
+        print(
+            f"To: "
+            f"{trip['destination']}"
+        )
+
+        print(
+            f"Price Per Person: "
+            f"{selected_transport.get('price_per_person', 'N/A')}"
+        )
+
+        print(
+            f"Total Price: "
+            f"{selected_transport.get('total_price', 'N/A')}"
+        )
+
     else:
-        print("\nNo transport option selected.")
+        print("No Transport Option Selected.")
 
 
     print("\n===== ACCOMMODATION OPTIONS =====")
@@ -244,10 +541,18 @@ def main():
     print_trip_details(trip)
 
     # Display budget summary
-    budget_plan = destination_info["budget_plan"]
+    budget_plan  = calculate_budget(
+        trip,
+        selected_transport,
+        selected_accommodation
+    )
+
+    destination_info["budget_plan"] = budget_plan
+
+    print("\n===== FINAL BUDGET =====")
+
     print_budget_summary(budget_plan)
     print_budget_status(budget_plan)
-
     suggest_budget_reduction(budget_plan)
 
     itinerary = generate_itinerary(trip,destination_info)

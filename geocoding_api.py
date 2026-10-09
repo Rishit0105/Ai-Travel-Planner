@@ -32,15 +32,21 @@ def get_coordinates(destination, state=None):
     result = None
 
     for place in data["results"]:
+        place_state = place.get("admin1")
+        place_country = place.get("country")
 
-        if state is None or place.get("admin1") == state:
+        if state:
+            if (
+                place_state
+                and place_state.lower() == state.lower()
+                and place_country == "India"
+            ):
+                result = place
+                break
+
+        elif place_country == "India":
             result = place
             break
-
-    if result is None:
-        raise ValueError(
-            f"Could not find {destination} in {state}."
-        )
 
     return {
         "name": result["name"],

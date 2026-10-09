@@ -37,7 +37,15 @@ def get_accommodation_options(
         "nights": nights,
         "rooms": rooms,
         "total_price": 2500 * nights * rooms,
-        "currency": "INR"
+        "currency": "INR",
+        "rating": 4.2,
+        "amenities": [
+            "Wi-Fi",
+            "Breakfast",
+            "Parking"
+            ],
+        "price_type": "Estimated",
+        "booking_required": True
         },
 
         {
@@ -50,7 +58,15 @@ def get_accommodation_options(
         "nights": nights,
         "rooms": rooms,
         "total_price": 4000 * nights * rooms,
-        "currency": "INR"
+        "currency": "INR",
+        "rating": 4.2,
+        "amenities": [
+            "Wi-Fi",
+            "Breakfast",
+            "Parking"
+            ],
+        "price_type": "Estimated",
+        "booking_required": True
         },
 
         {
@@ -63,7 +79,15 @@ def get_accommodation_options(
         "nights": nights,
         "rooms": rooms,
         "total_price": 7000 * nights * rooms,
-        "currency": "INR"
+        "currency": "INR",
+        "rating": 4.2,
+        "amenities": [
+            "Wi-Fi",
+            "Breakfast",
+            "Parking"
+            ],
+        "price_type": "Estimated",
+        "booking_required": True
         }
 ]
     

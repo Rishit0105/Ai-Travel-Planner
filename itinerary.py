@@ -39,10 +39,7 @@ def generate_itinerary(trip, destination_info):
         for day in range(1, travel_days + 1)
     }
 
-    def matches_interests(item):
-        if not interests:
-            return True
-
+    def get_searchable_text(item):
         name = str(item.get("name") or "").lower()
         address = str(item.get("address") or "").lower()
         category = item.get("category") or ""
@@ -52,65 +49,199 @@ def generate_itinerary(trip, destination_info):
 
         category = str(category).lower()
 
-        searchable_text = f"{name} {address} {category}"
+        return f"{name} {address} {category}"
+
+    def matches_interests(item):
+        if not interests:
+            return True
+
+        searchable_text = get_searchable_text(item)
 
         return any(
             interest in searchable_text
             for interest in interests
         )
 
-    # Filter sightseeing places
+    def get_area(item):
+        """
+        Attempts to identify the area of a place using its
+        name and address.
+
+        These keywords are especially useful for Jaipur.
+        Unknown places are placed in a general group.
+        """
+
+        searchable_text = get_searchable_text(item)
+
+        area_keywords = {
+            "Amer Area": [
+                "amer",
+                "amber",
+                "fort",
+                "ganesh pol",
+                "sheesh mahal",
+                "panna meena",
+                "jaigarh",
+                "nahargarh"
+            ],
+            "Central Jaipur": [
+                "city palace",
+                "diwan-i-khas",
+                "diwan e khas",
+                "jantar mantar",
+                "hawa mahal",
+                "pink city",
+                "bapu bazaar",
+                "johari bazaar",
+                "tripolia bazaar",
+                "paanch batti"
+            ],
+            "Gaitor Area": [
+                "gaitor",
+                "royal gaitor",
+                "garh ganesh"
+            ],
+            "City Area": [
+                "shaheed smarak",
+                "central park",
+                "ram niwas",
+                "albert hall",
+                "museum",
+                "railway station",
+                "bani park"
+            ],
+            "Shopping Area": [
+                "market",
+                "bazaar",
+                "mall",
+                "shopping",
+                "marketplace",
+                "emporium",
+                "souvenir"
+            ]
+        }
+
+        for area, keywords in area_keywords.items():
+            if any(keyword in searchable_text for keyword in keywords):
+                return area
+
+        return "General Area"
+
+    def prepare_item(item, item_type):
+        if item_type in ["place", "places"]:
+            return {
+                "name": item.get("name", "Unknown Place"),
+                "address": item.get(
+                    "address",
+                    "Address unavailable"
+                ),
+                "distance": item.get("distance", "Unknown")
+            }
+
+        if item_type == "food":
+            return {
+                "name": item.get("name", "Unknown Food Place"),
+                "address": item.get(
+                    "address",
+                    "Address unavailable"
+                ),
+                "category": item.get("category") or "Food Place",
+                "distance": item.get("distance", "Unknown")
+            }
+
+        if item_type == "shopping":
+            return {
+                "name": item.get("name", "Unknown Shopping Place"),
+                "address": item.get(
+                    "address",
+                    "Address unavailable"
+                ),
+                "category": item.get(
+                    "category",
+                    "Shopping Place"
+                ),
+                "distance": item.get("distance", "Unknown")
+            }
+
+    def group_by_area(items):
+        grouped_items = {}
+
+        for item in items:
+            area = get_area(item)
+
+            if area not in grouped_items:
+                grouped_items[area] = []
+
+            grouped_items[area].append(item)
+
+        return grouped_items
+
+    def distribute_groups(grouped_items, item_type):
+        """
+        Assigns each area group to a day.
+
+        The largest group is assigned first to keep the
+        itinerary relatively balanced.
+        """
+
+        sorted_groups = sorted(
+            grouped_items.items(),
+            key=lambda group: len(group[1]),
+            reverse=True
+        )
+
+        day_loads = {
+            day: 0
+            for day in range(1, travel_days + 1)
+        }
+
+        for area, area_items in sorted_groups:
+            target_day = min(
+                day_loads,
+                key=day_loads.get
+            )
+
+            day_key = f"Day {target_day}"
+
+            for item in area_items:
+                itinerary[day_key][item_type].append(
+                    prepare_item(item, item_type)
+                )
+
+            day_loads[target_day] += len(area_items)
+
+    # Filter sightseeing places according to interests
     filtered_places = [
         place
         for place in places
         if matches_interests(place)
     ]
 
+    # If filtering removes everything, use all places
     if not filtered_places:
         filtered_places = places
 
-    # Distribute sightseeing across all days
-    for index, place in enumerate(filtered_places):
-        day_number = (index % travel_days) + 1
-        day_key = f"Day {day_number}"
+    # Group sightseeing places by area
+    place_groups = group_by_area(filtered_places)
 
-        itinerary[day_key]["places"].append({
-            "name": place.get("name", "Unknown Place"),
-            "address": place.get("address", "Address unavailable"),
-            "distance": place.get("distance", "Unknown")
-        })
+    # Assign sightseeing groups to days
+    distribute_groups(place_groups, "places")
 
-    # Distribute food places
+    # Distribute food places individually across the days
     for index, food in enumerate(food_places):
         day_number = (index % travel_days) + 1
         day_key = f"Day {day_number}"
 
-        itinerary[day_key]["food"].append({
-            "name": food.get("name", "Unknown Food Place"),
-            "address": food.get("address", "Address unavailable"),
-            "category": food.get("category") or "Food Place",
-            "distance": food.get("distance", "Unknown")
-        })
+        itinerary[day_key]["food"].append(
+            prepare_item(food, "food")
+        )
 
-    # Distribute shopping places
+    # Distribute shopping places individually across the days
     for index, shopping in enumerate(shopping_places):
         day_number = (index % travel_days) + 1
         day_key = f"Day {day_number}"
 
-        itinerary[day_key]["shopping"].append({
-            "name": shopping.get(
-                "name",
-                "Unknown Shopping Place"
-            ),
-            "address": shopping.get(
-                "address",
-                "Address unavailable"
-            ),
-            "category": shopping.get(
-                "category",
-                "Shopping Place"
-            ),
-            "distance": shopping.get("distance", "Unknown")
-        })
-
+        itinerary[day_key]["shopping"].append(
+            prepare_item(shopping, "shopping")
+        )
     return itinerary

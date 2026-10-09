@@ -1,19 +1,20 @@
 def get_travel_style_preferences(travel_style):
+    travel_style = travel_style.strip().lower()
 
     preferences = {
         "budget": {
-            "max_price_multiplier": 1.0,
-            "priority": "price"
+            "max_price_multiplier": 1.5,
+            "preferred_modes": ["Bus", "Train", "Flight"]
         },
 
         "normal": {
-            "max_price_multiplier": 1.5,
-            "priority": "balanced"
+            "max_price_multiplier": 5,
+            "preferred_modes": ["Train", "Bus", "Flight", "Cab"]
         },
 
         "luxury": {
-            "max_price_multiplier": 3.0,
-            "priority": "comfort"
+            "max_price_multiplier": 12,
+            "preferred_modes": ["Flight", "Cab", "Train", "Bus"]
         }
     }
 
@@ -26,22 +27,22 @@ def get_travel_style_preferences(travel_style):
 
 
 def filter_transport_options(
-        transport_options,
-        travel_style
+    transport_options,
+    travel_style
 ):
-
     preferences = get_travel_style_preferences(travel_style)
 
     if not transport_options:
         return []
 
     cheapest_price = min(
-                option["total_price"]
-                for option in transport_options
-                )
+        option["total_price"]
+        for option in transport_options
+    )
 
     max_allowed_price = (
-        cheapest_price * preferences["max_price_multiplier"]
+        cheapest_price *
+        preferences["max_price_multiplier"]
     )
 
     filtered_options = [
@@ -50,8 +51,16 @@ def filter_transport_options(
         if option["total_price"] <= max_allowed_price
     ]
 
-    return filtered_options
+    # Always keep at least one option
+    if not filtered_options:
+        filtered_options = [
+            min(
+                transport_options,
+                key=lambda option: option["total_price"]
+            )
+        ]
 
+    return filtered_options
 
 def filter_accommodation_options(
         accommodation_options,
